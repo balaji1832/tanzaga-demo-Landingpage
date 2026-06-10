@@ -1,65 +1,51 @@
-import Image from "next/image";
+import DeveloperLogoSlider from "@/components/DeveloperLogoSlider";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main>
+      <section className="relative min-h-screen overflow-hidden pt-[88px]">
+        <div className="absolute inset-0 bg-[url('/images/banner.jpg')] bg-cover bg-center" />
+        <div className="absolute inset-0 bg-black/35" />
+
+        <div className="relative z-10 flex min-h-[calc(100vh-88px)] items-center px-6 md:px-20">
+          <div className="max-w-6xl">
+            <h1 className="font-serif text-[42px] uppercase leading-[1.15] tracking-[0.08em] text-white md:text-[78px]">
+              Buy, Rent, or Sell Your Spaces <br />
+              We Make It Easy For You
+            </h1>
+
+            <div className="mt-10 max-w-[980px] rounded-2xl bg-[#5d574d]/85 p-5 backdrop-blur-md">
+              <div className="mb-5 flex gap-1">
+                {["Buy", "Rent", "Off-Plan"].map((item, index) => (
+                  <button
+                    key={item}
+                    className={`h-14 min-w-[125px] rounded-lg border border-white/20 px-8 text-lg font-medium text-white ${
+                      index === 0 ? "bg-[#ad7566]" : "bg-white/5"
+                    }`}
+                  >
+                    {item}
+                  </button>
+                ))}
+              </div>
+
+              <div className="grid overflow-hidden rounded-lg bg-white md:grid-cols-[1fr_180px_245px_135px]">
+                <input
+                  placeholder="Search area or project for sale..."
+                  className="h-14 px-5 outline-none"
+                />
+                <button className="h-14 border-l px-5 text-left">Beds</button>
+                <button className="h-14 border-l px-5 text-left">
+                  Price Range
+                </button>
+                <button className="h-14 bg-[#ad7566] font-semibold text-white">
+                  Search
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </section>
+      <DeveloperLogoSlider />
+    </main>
   );
 }

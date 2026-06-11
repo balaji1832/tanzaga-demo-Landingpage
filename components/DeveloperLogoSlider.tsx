@@ -10,8 +10,8 @@ const logos = [
 
 export default function DeveloperLogoSlider() {
   return (
-    <section className="overflow-hidden bg-white py-14">
-      <div className="relative flex min-h-[260px] w-full items-center">
+    <section className="overflow-hidden bg-white py-4">
+      <div className="relative flex min-h-[160px] w-full items-center">
         <div className="flex animate-logo-scroll items-center gap-14 whitespace-nowrap">
           {[...logos, ...logos, ...logos].map((logo, index) => (
             <div
@@ -21,7 +21,7 @@ export default function DeveloperLogoSlider() {
               <img
                 src={logo}
                 alt="Developer logo"
-                className="max-h-[150px] max-w-[250px] object-contain grayscale opacity-55 transition-all duration-700 ease-out group-hover:-translate-y-2 group-hover:scale-110 group-hover:grayscale-0 group-hover:opacity-100 group-hover:drop-shadow-[0_18px_28px_rgba(0,0,0,0.16)]"
+                className="max-h-[170px] max-w-[220px] object-contain grayscale opacity-55 transition-all duration-700 ease-out group-hover:-translate-y-2 group-hover:scale-110 group-hover:grayscale-0 group-hover:opacity-100 group-hover:drop-shadow-[0_18px_28px_rgba(0,0,0,0.16)]"
               />
             </div>
           ))}

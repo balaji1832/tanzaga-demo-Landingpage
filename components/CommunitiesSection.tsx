@@ -8,7 +8,13 @@ import { ArrowUpRight, MapPin } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const communities = [
+type Community = {
+  name: string;
+  properties: string;
+  image: string;
+};
+
+const communities: Community[] = [
   {
     name: "Business Bay",
     properties: "18 Properties",
@@ -63,38 +69,24 @@ export default function CommunitiesSection() {
 
     const ctx = gsap.context(() => {
       const getScrollAmount = () => {
-        const distance = track.scrollWidth - window.innerWidth;
-        return distance > 0 ? -distance : 0;
+        return track.scrollWidth - window.innerWidth;
       };
 
       gsap.to(track, {
-        x: getScrollAmount,
+        x: () => -getScrollAmount(),
         ease: "none",
         scrollTrigger: {
           trigger: section,
           start: "top top",
-          end: () => `+=${track.scrollWidth - window.innerWidth + 500}`,
-          scrub: 1.25,
+          end: () => `+=${getScrollAmount() + 600}`,
+          scrub: 1,
           pin: true,
           anticipatePin: 1,
           invalidateOnRefresh: true,
         },
       });
 
-      gsap.from(".community-card", {
-        y: 80,
-        opacity: 0,
-        scale: 0.94,
-        rotateY: -8,
-        stagger: 0.08,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: section,
-          start: "top 75%",
-          once: true,
-        },
-      });
+      ScrollTrigger.refresh();
     }, section);
 
     return () => ctx.revert();
@@ -103,14 +95,14 @@ export default function CommunitiesSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-[#f7f9fc] py-16 sm:py-20"
+      className="relative overflow-hidden bg-[#f7f9fc] py-20"
     >
       <div className="mx-auto max-w-[1500px] px-5 text-center sm:px-8">
         <motion.h2
-          initial={{ opacity: 0, y: 25, letterSpacing: "0.16em" }}
-          whileInView={{ opacity: 1, y: 0, letterSpacing: "0.055em" }}
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.8 }}
           className="font-serif text-[34px] uppercase leading-none text-black sm:text-[44px] lg:text-[54px]"
         >
           Communities
@@ -120,7 +112,7 @@ export default function CommunitiesSection() {
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.9, delay: 0.15 }}
+          transition={{ duration: 0.8, delay: 0.15 }}
           className="mx-auto mt-5 max-w-[760px] text-[15px] leading-[1.8] text-black sm:text-[17px]"
         >
           Explore Dubai’s most sought-after neighborhoods, each offering
@@ -128,15 +120,15 @@ export default function CommunitiesSection() {
         </motion.p>
       </div>
 
-      <div className="mt-14 overflow-visible [perspective:1400px]">
+      <div className="mt-14 w-full">
         <div
           ref={trackRef}
-          className="flex w-max gap-6 px-5 sm:px-10 lg:px-16"
+          className="flex w-max gap-6 px-5 pb-12 sm:px-10 lg:px-16"
         >
           {communities.map((item) => (
             <article
               key={item.name}
-              className="community-card group relative h-[360px] w-[82vw] shrink-0 overflow-hidden rounded-[22px] bg-black shadow-[0_24px_80px_rgba(15,23,42,0.16)] transition duration-700 [transform-style:preserve-3d] hover:-translate-y-3 hover:shadow-[0_42px_110px_rgba(15,23,42,0.26)] sm:w-[430px] lg:h-[400px] lg:w-[480px]"
+              className="group relative h-[360px] w-[82vw] shrink-0 overflow-hidden rounded-[22px] bg-black shadow-[0_24px_80px_rgba(15,23,42,0.16)] transition duration-700 hover:-translate-y-3 hover:shadow-[0_42px_110px_rgba(15,23,42,0.26)] sm:w-[430px] lg:h-[400px] lg:w-[480px]"
             >
               <img
                 src={item.image}

@@ -83,7 +83,7 @@ export default function Footer() {
           <img
             src="/images/logo-1.png"
             alt="Tanzaga"
-            className="w-[230px] object-contain sm:w-[260px] lg:w-[300px]"
+            className="w-[230px] object-contain sm:w-[230px] lg:w-[250px]"
           />
 
           <p className="mt-7 max-w-[650px] text-[15px] leading-[1.65] text-[#263b5f] sm:text-[16px]">

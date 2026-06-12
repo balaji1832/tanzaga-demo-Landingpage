@@ -114,7 +114,7 @@ export default function Header() {
             <img
               src="/images/logo-1.png"
               alt="Tanzaga"
-              className="h-[42px] w-[184px] object-contain object-left sm:h-[46px] sm:w-[200px] lg:h-[58px] lg:w-[255px] xl:h-[62px] xl:w-[275px]" />
+              className="h-[42px] w-[184px] object-contain object-left sm:h-[46px] sm:w-[200px] lg:h-[52px] lg:w-[250px] xl:h-[52px] xl:w-[255px]" />
           </Link>
 
           <nav className="hidden h-full flex-1 items-center gap-[27px] xl:flex">
